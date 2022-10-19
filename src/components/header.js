@@ -1,3 +1,7 @@
+// import { data } from "msw/lib/types/context";
+
+// import { container } from "webpack";
+
 const Header = (title, date, temp) => {
   // TASK 1
   // ---------------------
@@ -10,7 +14,26 @@ const Header = (title, date, temp) => {
   //    <h1>{ title }</h1>
   //    <span class="temp">{ temp }</span>
   //  </div>
-  //
+  //\
+ 
+  const magHeader = document.createElement('div');
+  const magTitle = document.createElement('h1');
+  const magDate = document.createElement('span');
+  const magTemp = document.createElement('span');
+  
+  magHeader.classList.add('header');
+  magTemp.classList.add('temp');
+  magDate.classList.add('date');
+  
+  magTitle.textContent = (title);
+  magDate.textContent = `${date}`;
+  magTemp.textContent = `${temp}`;
+  
+  magHeader.appendChild(magTitle);
+  magHeader.appendChild(magTemp);
+  magHeader.appendChild(magDate);
+  
+  return magHeader
 }
 
 const headerAppender = (selector) => {
@@ -20,6 +43,9 @@ const headerAppender = (selector) => {
   // It should create a header using the Header component above, passing arguments of your choosing.
   // It should append the header to the element in the DOM that matches the given selector.
   //
+  const newHeader = Header('Bloomtech Times', 'October 19th, 2022', '26')
+  document.querySelector(selector).appendChild(newHeader)
+  return headerAppender
 }
 
 export { Header, headerAppender }
